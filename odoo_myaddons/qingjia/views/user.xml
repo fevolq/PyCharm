@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+<!--员工的列表tree视图-->
+        <record model="ir.ui.view" id="qingjiadan_tree1">
+            <field name="name">qingjiadan tree1</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="yuangong_user"/>
+                    <field name="manager"/>
+                    <field name="start_time"/>
+                    <field name="end_time"/>
+                    <field name="days"/>
+                    <field name="types"/>
+                    <field name="reason"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+<!--员工的form视图-->
+        <record model="ir.ui.view" id="qingjiadan_form1">
+            <field name="name">qingjiadan form1</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="提交" type="workflow" name="confirm" class="oe_highlight"/>
+<!--                        <button string="提交" type="object" name="a" class="oe_highlight"/>-->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <group>
+                        <field name="yuangong_user" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="manager" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="start_time" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="end_time" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="types" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        <field name="reason" placeholder="提示：[必填项]“调休”则填调休，“其他”则填写理由" attrs="{'readonly':[('state','!=','draft')]}"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

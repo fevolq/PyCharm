@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+    <!--action动作定义-->
+        <!--签到打卡action-->
+        <record id="cpo_action1" model="ir.actions.act_window">
+            <field name="name">attendance action1</field>
+            <field name="res_model">cpo.cpo_click</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode': 'form', 'view_id': ref('cpo_click_form')}),]"/>
+        </record>
+        <!--打卡单action-->
+        <record id="cpo_action2" model="ir.actions.act_window">
+            <field name="name">attendance action2</field>
+            <field name="res_model">cpo.cpo_click</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode': 'tree', 'view_id': ref('cpo_click_tree')}),
+            (0,0,{'view_mode': 'form', 'view_id': ref('cpo_click_form')}),]"/>
+        </record>
+        <!--排班action-->
+        <record id="cpo_action3" model="ir.actions.act_window">
+            <field name="name">attendance action3</field>
+            <field name="res_model">cpo.cpo_time</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode': 'tree', 'view_id': ref('cpo_time_tree')}),
+            (0,0,{'view_mode': 'form', 'view_id': ref('cpo_time_form')}),]"/>
+        </record>
+        <!--考勤表action-->
+        <record id="cpo_action4" model="ir.actions.act_window">
+            <field name="name">attendance action4</field>
+            <field name="res_model">cpo.cpo_attendance</field>
+            <field name="domain">[('cpo_day','!=',None)]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode': 'tree', 'view_id': ref('cpo_attendance_tree')}),
+            (0,0,{'view_mode': 'form', 'view_id': ref('cpo_attendance_form')}),]"/>
+        </record>
+
+        <!--菜单-->
+        <menuitem name="考勤表" id="attendance_menu_root" action="cpo_action2"/>
+        <menuitem name="员工签到" id="attendance_menu1" parent="attendance_menu_root" action="cpo_action1"/>
+        <menuitem name="打卡单" id="attendance_menu2" parent="attendance_menu_root" action="cpo_action2"/>
+        <menuitem name="排班安排" id="attendance_menu3" parent="attendance_menu_root" action="cpo_action3"/>
+        <menuitem name="考勤表" id="attendance_menu4" parent="attendance_menu_root" action="cpo_action4"/>
+
+    </data>
+</odoo>

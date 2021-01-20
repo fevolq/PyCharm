@@ -1,0 +1,37 @@
+<odoo>
+  <data>
+<!--    视图定义-->
+    <record id="test_tree_1" model="ir.ui.view">
+      <field name="name">spider tree1</field>
+      <field name="model">test.spider</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="spider">
+          <field name="name"/>
+          <field name="net"/>
+          <field name="net_type"/>
+          <field name="whether"/>
+          <field name="unreason"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="test_form_1">
+      <field name="name">spider form1</field>
+      <field name="model">test.spider</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="net"/>
+            <field name="net_type"/>
+            <field name="whether"/>
+<!--            <field name="unreason"/>-->
+          </group>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <record id="wizard_view" model="ir.ui.view">
+            <field name="name">wizard view</field>
+            <field name="model">cpo.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="cpo_name"/>
+                        <field name="cpo_day"/>
+                    </group>
+                    <footer>
+                        <button name="a" type="object" string="生成" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_action_view" model="ir.actions.act_window">
+            <field name="name">wizard action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cpo.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="wizard_action"
+                    name="wizard action"
+                    res_model="cpo.wizard"
+                    src_model="cpo.cpo_time"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+        />
+    </data>
+</odoo>

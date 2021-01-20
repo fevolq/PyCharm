@@ -1,0 +1,104 @@
+<odoo>
+  <data>
+    <!--打卡视图-->
+    <record model="ir.ui.view" id="cpo_click_form">
+      <field name="name">cpo_click form</field>
+      <field name="model">cpo.cpo_click</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+              <button string="打卡" type="object" name="Click" class="oe_highlight"/>
+<!--              <button string="签到" type="object" name="cpo_start" class="oe_highlight"/>-->
+<!--              <button string="签退" type="object" name="cpo_end" class="oe_highlight"/>-->
+              <field name="cpo_states" widget="statusbar" statusbar_visible="no_click,have_click"/>
+          </header>
+          <group>
+            <field name="cpo_test"/>
+            <field name="cpo_day"/>
+            <field name="cpo_click_time"/>
+<!--            <field name="cpo_start_time"/>-->
+<!--            <field name="cpo_end_time"/>-->
+          </group>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="cpo_click_tree">
+      <field name="name">cpo_click tree</field>
+      <field name="model">cpo.cpo_click</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="cpo_id"/>
+          <field name="cpo_name"/>
+          <field name="cpo_day"/>
+          <field name="cpo_click_time"/>
+<!--          <field name="cpo_start_time"/>-->
+<!--          <field name="cpo_end_time"/>-->
+        </tree>
+      </field>
+    </record>
+
+    <!--排班视图-->
+    <record model="ir.ui.view" id="cpo_time_form">
+      <field name="name">cpo_time form</field>
+      <field name="model">cpo.cpo_time</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="cpo_name"/>
+            <field name="cpo_day"/>
+<!--            <field name="work_time"/>-->
+          </group>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="cpo_time_tree">
+      <field name="name">cpo_time tree</field>
+      <field name="model">cpo.cpo_time</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="cpo_id"/>
+          <field name="cpo_name"/>
+          <field name="cpo_day"/>
+          <field name="work_time"/>
+<!--          <field name="day_night"/>-->
+        </tree>
+      </field>
+    </record>
+
+    <!--考勤表视图-->
+    <record model="ir.ui.view" id="cpo_attendance_form">
+      <field name="name">cpo_attendance form</field>
+      <field name="model">cpo.cpo_attendance</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button string="员工考勤表生成" type="object" name="Botton" class="oe_highlight"/>
+            <field name="cpo_states" widget="statusbar" statusbar_visible="0,1"/>
+          </header>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="cpo_attendance_tree">
+      <field name="name">cpo_attendance tree</field>
+      <field name="model">cpo.cpo_attendance</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="cpo_id"/>
+          <field name="cpo_name"/>
+          <field name="cpo_day"/>
+          <field name="cpo_work_time"/>
+          <field name="cpo_start1"/>
+          <field name="cpo_end1"/>
+          <field name="cpo_start2"/>
+          <field name="cpo_end2"/>
+          <field name="cpo_late"/>
+          <field name="cpo_early"/>
+          <field name="cpo_absence"/>
+          <field name="cpo_leave"/>
+          <field name="cpo_times"/>
+        </tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>

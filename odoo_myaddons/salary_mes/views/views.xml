@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+    <!--tree视图-->
+    <record model="ir.ui.view" id="salary_mes_tree1">
+      <field name="name">salary_mes tree1</field>
+      <field name="model">sa.message</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="employee_id"/>
+          <field name="employee_name"/>
+          <field name="employee_salary"/>
+          <field name="mes"/>
+<!--          <field name="write_time"/>-->
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="salary_mes_form1">
+      <field name="name">salary_mes form1</field>
+      <field name="model">sa.message</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+<!--            <field name="employee_id"/>-->
+            <field name="employee_name"/>
+            <field name="employee_salary"/>
+            <field name="mes"/>
+          </group>
+        </form>
+      </field>
+    </record>
+  </data>
+</odoo>

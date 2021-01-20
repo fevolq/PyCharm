@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+<!--tree视图-->
+        <record id="sql_tree" model="ir.ui.view">
+            <field name="name">sql tree</field>
+            <field name="model">cpo.attendance_sql</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cpo_name"/>
+                    <field name="cpo_times"/>
+                    <field name="cpo_late"/>
+                    <field name="cpo_early"/>
+                    <field name="cpo_absence"/>
+                    <field name="cpo_leave"/>
+                </tree>
+            </field>
+        </record>
+
+<!--        <record id="sql_form" model="ir.ui.view">-->
+<!--            <field name="name">sql form</field>-->
+<!--            <field name="model">cpo.attendance_sql</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+<!--                    <group>-->
+<!--                        <field name="cpo_name"/>-->
+<!--                    </group>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="sql_action" model="ir.actions.act_window">
+            <field name="name">sql action</field>
+            <field name="res_model">cpo.attendance_sql</field>
+            <field name="view_type">form</field>
+            <field name="view_model">tree,form</field>
+<!--            <field name="view_ids" eval="[(5,0,0),-->
+<!--            (0,0,{'view_mode': 'tree', 'view_id': ref('sql_tree')}),-->
+<!--            (0,0,{'view_mode': 'form', 'view_id': ref('sql_form')}),]"/>-->
+        </record>
+
+        <menuitem name="月考勤总计" id="sql_menu" parent="cpo_attendance.attendance_menu_root" action="sql_action"/>
+    </data>
+</odoo>

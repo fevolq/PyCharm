@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+
+        <!--管理者的列表视图-->
+        <record model="ir.ui.view" id="qingjiadan_tree2">
+            <field name="name">qingjiadan tree2</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="qingjia" decoration-danger="deco">
+                    <field name="yuangong_user"/>
+                    <field name="manager"/>
+                    <field name="start_time"/>
+                    <field name="end_time"/>
+                    <field name="days"/>
+                    <field name="types"/>
+                    <field name="reason"/>
+                    <field name="aggrement"/>
+                    <field name="unreason"/>
+                    <field name="deal"/>
+                    <field name="deco" invisible="True"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--管理者的表单视图-->
+        <record model="ir.ui.view" id="qingjiadan_form2">
+            <field name="name">qingjiadan form2</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="审批" type="workflow" name="approval" class="oe_highlight"/>
+                        <button string="取消" type="workflow" name="cancel" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="confirm,approval,cancel"/>
+                    </header>
+                    <group>
+                        <field name="aggrement" attrs="{'readonly':[('state','!=','confirm')]}"/>
+                        <field name="unreason" placeholder="提示：同意则不填" attrs="{'readonly':[('state','!=','confirm')]}"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!--搜索视图-->
+<!--        <record model="ir.ui.view" id="qingjiadan_search">-->
+<!--            <search sring="search">-->
+<!--                <field name="name"/>-->
+<!--                <field name="description"/>-->
+<!--                <field name="deal" string="deal"-->
+<!--                       domain="[('deal','=','未处理')]"/>-->
+<!--                <group string="group by">-->
+<!--                    <filter name="types" string="请假类型"-->
+<!--                            context="{'group_by':'types'}"/>-->
+<!--                </group>-->
+<!--            </search>-->
+<!--        </record>-->
+    </data>
+</odoo>

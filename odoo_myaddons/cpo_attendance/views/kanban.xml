@@ -1,0 +1,111 @@
+<odoo>
+    <data>
+<!--        <record model="ir.ui.view" id="attendance_kanban">-->
+<!--            <field name="name">attendance kanban</field>-->
+<!--            <field name="model">cpo.cpo_attendance</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <kanban class="oe_background_grey o_kanban_dashboard o_attendance_kanban">-->
+<!--                    <field name="cpo_name"/>-->
+<!--                    <field name="cpo_times"/>-->
+<!--                    <field name="cpo_day"/>-->
+<!--                    <field name="cpo_start1"/>-->
+<!--                    <field name="cpo_end1"/>-->
+<!--                    <templates>-->
+<!--                        <t t-name="kanban-box">-->
+<!--                            <div t-attf-class="#{kanban_color(record.color.raw-value)}">-->
+<!--                                <div class="o_kanban_card_header">-->
+<!--                                    <div class="o_kanban_card_header_title">-->
+<!--                                        <p class="o_primary"><field name="cpo_name"/></p>-->
+<!--                                        <p class="o_secondary"><field name="cpo_day"/></p>-->
+<!--                                    </div>-->
+<!--                                    <div class="o_kanban_manage_button_section">-->
+<!--                                        <a class="o_kanban_manage_toggle_button" href="#">更多<i class="fa fa-caret-down"/></a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="container o_kanban_card_content o_visible">-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-xs-6 o_kanban_primary_left">-->
+<!--                                            <p class="o_primary"><field name="cpo_start1"/></p>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-xs-6 o_kanban_primary_right">-->
+<!--                                            <p class="o_primary"><field name="cpo_end1"/></p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="container o_kanban_card_manage_pane o_invisible">-->
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-xs-4 o_kanban_card_manage_section o_kanban_manage_to_do">-->
+<!--                                            <div class="o_kanban_card_manage_title">-->
+<!--                                                <span>To Do</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-xs-4 o_kanban_card_manage_section o_kanban_manage_to_approve">-->
+<!--                                            <div class="o_kanban_card_manage_title">-->
+<!--                                                <span>Doing</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-xs-4 o_kanban_card_manage_section o_kanban_manage_reports">-->
+<!--                                            <div class="o_kanban_card_manage_title">-->
+<!--                                                <span>Done</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div t-if="widget.editable" class="o_kanban_card_manage_settings row">-->
+<!--                                        <div class="col-xs-8">-->
+<!--                                            <ul class="oe_kanban_colorpicker" data-field="color"/>-->
+<!--                                        </div>-->
+<!--                                        <div class="col-xs-4 text-right">-->
+<!--                                            <a type="edit">设置</a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                    </templates>-->
+<!--                </kanban>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="hr_kanban_view_employees" model="ir.ui.view">
+            <field name="name">attendance kanban</field>
+            <field name="model">cpo.cpo_attendance</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <kanban class="o_cpo_attendance_kanban">
+                    <field name="cpo_name"/>
+                    <field name="cpo_times"/>
+                    <field name="cpo_day"/>
+                    <field name="cpo_start1"/>
+                    <field name="cpo_end1"/>
+                    <field name="cpo_start2"/>
+                    <field name="cpo_end2"/>
+                    <templates>
+                        <t t-name="kanban-box">
+<!--                        <div class="oe_kanban_global_click">-->
+                        <div class="container o_kanban_card_content o_visible">
+<!--                            <field name="category_ids"/>-->
+                            <div class="oe_kanban_details">
+                                <strong>
+                                    姓名：
+                                    <field name="cpo_name"/>
+                                </strong>
+                                <ul>
+                                    <li id="last_login"/>
+                                    日期：
+                                    <li t-if="record.cpo_day.raw_value"><field name="cpo_day"/></li>
+                                    工时：
+                                    <li t-if="record.cpo_times.raw_value"><field name="cpo_times"/></li>
+<!--                                    <li t-if="record.cpo_start1.raw_value"><field name="cpo_start1"/></li>-->
+<!--                                    <li t-if="record.cpo_end1.raw_value"><field name="cpo_end1"/></li>-->
+<!--                                    <li t-if="record.cpo_start2.raw_value"><field name="cpo_start2"/></li>-->
+<!--                                    <li t-if="record.cpo_end2.raw_value"><field name="cpo_end2"/></li>-->
+                                </ul>
+                            </div>
+                        </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

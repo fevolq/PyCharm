@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <!--主菜单定义-->
+        <menuitem name="test" id="test_menu_root"/>
+
+        <!--菜单动作定义-->
+        <record id="test_action_server1" model="ir.actions.act_window">
+            <field name="name">spider server1</field>
+            <field name="res_model">test.spider</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="view_ids" eval="[(5,0,0),-->
+<!--          (0,0,{'view_mode': 'form', 'view_id': ref('test_form_1')}),]"/>-->
+<!--          <field name="view_ids" eval="[(5,0,0),-->
+<!--          (0,0,{'view_mode': 'tree', 'view_id': ref('test_tree_1')}),-->
+<!--          (0,0,{'view_mode': 'form', 'view_id': ref('test_form_1')}),]"/>-->
+        </record>
+
+        <record id="test_action_server2" model="ir.actions.act_window">
+            <field name="name">spider server2</field>
+            <field name="res_model">test.spider</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="view_ids" eval="[(5,0,0),-->
+<!--          (0,0,{'view_mode': 'tree', 'view_id': ref('test_tree_1')}),]"/>-->
+        </record>
+
+        <!--子菜单定义-->
+        <menuitem name="net" id="test_spider1" parent="test_menu_root" action="test_action_server1" sequence="1"/>
+        <menuitem name="message" id="test_spider2" parent="test_menu_root" action="test_action_server2" sequence="2"/>
+    </data>
+</odoo>

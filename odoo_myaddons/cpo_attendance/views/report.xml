@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <report
+            id="attendance_report"
+            model="cpo.cpo_attendance"
+            string="打印"
+            name="cpo_attendance.report"
+            report_type="qweb-html"
+            file="cpo_attendance.report"
+            attachment_use="True"
+            attachment="(object.cpo_id in ('open','paid')) and ('INV'+(object.cpo_name or '').replace('/','')+'.pdf')"
+        />
+
+        <template id="report">
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <!--首行-->
+                        <div class="row bg-primary">
+                            <div class="col-xs-1">ID</div>
+                            <div class="col-xs-1">姓名</div>
+                            <div class="col-xs-2">日期</div>
+                            <div class="col-xs-1">工时</div>
+                            <div class="col-xs-2">卡1</div>
+                            <div class="col-xs-2">卡2</div>
+                            <div class="col-xs-1">卡3</div>
+                            <div class="col-xs-1">卡4</div>
+                        </div>
+                        <!--内容-->
+                        <t t-foreach="docs" t-as="cpo">
+                            <div class="row">
+                                <div class="col-xs-1"><h5><span t-field="cpo.cpo_id"/></h5></div>
+                                <div class="col-xs-1"><h5><span t-field="cpo.cpo_name"/></h5></div>
+                                <div class="col-xs-2"><h7><span t-field="cpo.cpo_day"/></h7></div>
+                                <div class="col-xs-1"><h5><span t-field="cpo.cpo_times"/></h5></div>
+                                <div class="col-xs-2"><h7><span t-field="cpo.cpo_start1"/></h7></div>
+                                <div class="col-xs-2"><h8><span t-field="cpo.cpo_end1"/></h8></div>
+                                <div class="col-xs-1"><h9><span t-field="cpo.cpo_start2"/></h9></div>
+                                <div class="col-xs-1"><h10><span t-field="cpo.cpo_end2"/></h10></div>
+                            </div>
+                        </t>
+                        <!--总计-->
+<!--                        <div>-->
+<!--                            <div class="col-xs-2">-->
+<!--                                ID：<t t-esc="list(set([cpo.cpo_id for cpo in docs]))[0]"/>-->
+<!--                            </div>-->
+<!--                            <div class="col-xs-4">-->
+<!--                                姓名：<t t-esc="list(set([cpo.cpo_name for cpo in docs]))[0]"/>-->
+<!--                            </div>-->
+<!--                            <div class="col-xs-3">-->
+<!--                                总工时：<t t-esc="sum([int(cpo.cpo_times) for cpo in docs])"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

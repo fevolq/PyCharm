@@ -1,0 +1,99 @@
+<odoo>
+  <data>
+    <!--目录定义-->
+    <menuitem name="qingjiadan" id="qingjia_menu_root"/>
+
+    <!--视图定义-->
+    <record model="ir.ui.view" id="qingjiadan_tree1">
+      <field name="name">qingjiadan tree1</field>
+      <field name="model">qingjia.caogao</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="yuangong"/>
+          <field name="manager"/>
+          <field name="start_time"/>
+          <field name="days"/>
+          <field name="types"/>
+          <field name="reason"/>
+<!--          <field name="aggrement"/>-->
+<!--          <field name="unreason"/>-->
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="qingjiadan_tree2">
+      <field name="name">qingjiadan tree2</field>
+      <field name="model">qingjia.caogao</field>
+      <field name="inherit_id" ref="qingjiadan_tree1"/>
+      <field name="arch" type="xml">
+        <field name="reason" position="after">
+          <field name="aggrement"/>
+          <field name="unreason"/>
+        </field>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="qingjiadan_form1">
+      <field name="name">qingjiadan form1</field>
+      <field name="model">qingjia.caogao</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="yuangong"/>
+            <field name="manager"/>
+            <field name="start_time"/>
+            <field name="days"/>
+            <field name="types"/>
+            <field name="reason"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="qingjiadan_form2">
+      <field name="name">qingjiadan form2</field>
+      <field name="model">qingjia.caogao</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="aggrement"/>
+            <field name="unreason"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+
+    <!--action动作定义-->
+    <record id="qingjia_action_server1" model="ir.actions.act_window">
+            <field name="name">qingjia server1</field>
+            <field name="res_model">qingjia.caogao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode': 'tree', 'view_id': ref('qingjiadan_tree1')}),
+            (0,0,{'view_mode': 'form', 'view_id': ref('qingjiadan_form1')}),]"/>
+    </record>
+    <record id="qingjia_action_server2" model="ir.actions.act_window">
+            <field name="name">qingjia server2</field>
+            <field name="res_model">qingjia.caogao</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode': 'tree', 'view_id': ref('qingjiadan_tree1')}),
+            (0,0,{'view_mode': 'form', 'view_id': ref('qingjiadan_form2')}),]"/>
+      </record>
+    <record id="qingjia_action_server3" model="ir.actions.act_window">
+      <field name="name">qingjia server3</field>
+      <field name="res_model">qingjia.caogao</field>
+      <field name="view_type">tree</field>
+    </record>
+
+    <!--菜单定义-->
+    <menuitem name="员工" id="qingjia_user" parent="qingjia_menu_root" action="qingjia_action_server1" sequence="1"/>
+    <menuitem name="管理者" id="qingjia_manager" parent="qingjia_menu_root" action="qingjia_action_server2" sequence="2"/>
+    <menuitem name="请假单信息" id="qingjiadan" parent="qingjia_menu_root" action="qingjia_action_server3" sequence="3"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <!--动作定义-->
+        <record id="sa_action1" model="ir.actions.act_window">
+            <field name="name">sa_mes action1</field>
+            <field name="res_model">sa.message</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode': 'tree', 'view_id': ref('salary_mes_tree1')}),]"/>
+        </record>
+
+        <record id="sa_action2" model="ir.actions.act_window">
+            <field name="name">sa_mes action2</field>
+            <field name="res_model">sa.message</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0,0,{'view_mode': 'tree', 'view_id': ref('salary_mes_tree1')}),
+            (0,0,{'view_mode': 'form', 'view_id': ref('salary_mes_form1')}),]"/>
+        </record>
+
+        <!--菜单定义-->
+        <menuitem name="工资信息" id="sa_menu_root"/>
+        <menuitem name="信息录入" id="sa_menu1" parent="sa_menu_root" action="sa_action1" sequence="1"/>
+        <menuitem name="信息查看" id="sa_menu2" parent="sa_menu_root" action="sa_action2" sequence="2"/>
+    </data>
+</odoo>

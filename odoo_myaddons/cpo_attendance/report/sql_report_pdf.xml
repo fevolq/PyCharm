@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <report
+            id="sql_report"
+            model="cpo.attendance_sql"
+            string="打印总计"
+            name="cpo_attendance.report_for_work_record"
+            report_type="qweb-html"
+            file="cpo_attendance.report_for_work_record"
+            attachment_use="True"
+            attachment="(object.cpo_name in ('open','paid')) and ('INV'+(object.cpo_name or '').replace('/','')+'.pdf')"
+        />
+
+        <template id="report_for_work_record">
+            <t t-call="report.html_container">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <!--首行-->
+                        <div class="row bg-primary">
+                            <div class="col-xs-1">姓名</div>
+                            <div class="col-xs-1">总工时</div>
+                            <div class="col-xs-1">迟到</div>
+                            <div class="col-xs-1">早退</div>
+                            <div class="col-xs-1">缺勤</div>
+                            <div class="col-xs-1">请假</div>
+                        </div>
+                        <!--内容-->
+                        <t t-foreach="docs" t-as="cpo">
+                            <div class="row">
+                                <div class="col-xs-1"><h5><span t-field="cpo.cpo_name"/></h5></div>
+                                <div class="col-xs-1"><h5><span t-field="cpo.cpo_times"/></h5></div>
+                                <div class="col-xs-1"><h8><span t-field="cpo.cpo_late"/></h8></div>
+                                <div class="col-xs-1"><h8><span t-field="cpo.cpo_early"/></h8></div>
+                                <div class="col-xs-1"><h8><span t-field="cpo.cpo_absence"/></h8></div>
+                                <div class="col-xs-1"><h8><span t-field="cpo.cpo_leave"/></h8></div>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
